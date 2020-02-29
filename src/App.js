@@ -10,6 +10,9 @@ function App() {
   return (
     <div className="App">
       <h1>ESSENTIALISM</h1>
+      <div>
+        <Signup />
+      </div>
     </div>
   );
 }
