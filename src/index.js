@@ -9,13 +9,12 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
-// import to be created reducer
+import rootReducer from './reducers';
 
-// const store = createStore(rootReducer, applyMiddleware(thunk, logger));
-// also waiting on reducer ^^
+const store = createStore(rootReducer, applyMiddleware(thunk, logger));
 
 ReactDOM.render(
-  <Provider >
+  <Provider store={store}>
     <Router>
       <App />
     </Router>
