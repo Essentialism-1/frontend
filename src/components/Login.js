@@ -1,8 +1,13 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { Link } from 'react-router-dom';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import './formStyle.css';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
+
+import {
+  WhiteP
+} from '../styled/styledComponents';
 
 const Login = () => {
 
@@ -57,7 +62,9 @@ const Login = () => {
         <Button color='primary' type="submit">Login</Button>
 
       </Form>
-
+      <Link to='/signup'>
+        <WhiteP>Don't have an account? Sign up!</WhiteP>
+      </Link>
     </div>
   )
 }
