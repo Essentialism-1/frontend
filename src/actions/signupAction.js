@@ -20,3 +20,4 @@ export const SIGNUP_FAILURE = 'SIGNUP_FAILURE';
 //     .catch(err => console.log('Signup action error', err))
 //   );
 // };
+// signup is going to break the code until I can get those endpoints. add friends server to test tomorrow if I get time.
