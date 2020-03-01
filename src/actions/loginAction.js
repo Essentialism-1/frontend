@@ -7,7 +7,8 @@ export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 // export const login = values = dispatch => {
 //   console.log('login action firing');
 //   dispatch({ type: LOGIN_START });
-//   return axiosWithAuth()
+//   return (
+//    axiosWithAuth()
 //   .post('/login', values)
 //   // will depend on endpoint ^^
 //   .then(res => {
@@ -20,5 +21,6 @@ export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 //     console.log('loginAction error', err)
 //     dispatch({ type: LOGIN_FAILURE });
 //   })
+//  );
 // };
 // login is going to break the code until I can get those endpoints. add friends server to test tomorrow if I get time.

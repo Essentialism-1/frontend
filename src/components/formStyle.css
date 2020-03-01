@@ -1,6 +1,9 @@
 *{
   box-sizing: border-box;
 }
+
+/* Sign Up Form Styles */
+
 .signUp{
   width: 100%;
   height: 100vh;
@@ -20,8 +23,7 @@
   border-radius: 15px;
 }
 
-
-.form-group{
+.sign-up{
   height:100%;
   display: flex;
   flex-direction: column;
@@ -30,6 +32,43 @@
 }
 
 .login-form input {
+  width: 50px 100px;
+  background-color: rgb(241, 236, 236);
+  border-radius: 5px;
+  border-color:  rgb(241, 236, 236);
+}
+
+/* Login Form Styles */
+.login-page{
+  background: linear-gradient(122.25deg, #2F80ED 34.51%, rgba(0, 96, 225, 0) 77.11%), linear-gradient(125.42deg, #2F80ED 0%, #065BCE 100%);
+  height: 100vh;
+  width: 100%;
+  padding-top: 5%;
+}
+
+.login-page h2{
+  color:white;
+}
+
+.login-forms{
+   background: white;
+   height: 60%;
+   width: 50%;
+   margin: 0 auto;
+   display:flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: space-evenly;
+   border-radius:15px;
+}
+
+.login-groups{
+  display:flex;
+  flex-direction: column;
+  font-size: 1.2rem;
+}
+
+.login-groups input{
   width: 50px 100px;
   background-color: rgb(241, 236, 236);
   border-radius: 5px;
