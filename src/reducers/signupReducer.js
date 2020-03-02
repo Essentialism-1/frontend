@@ -4,17 +4,22 @@ import {
   SIGNUP_FAILURE,
 } from '../actions';
 
-const initialState = {};
+const initialState = {
+  loggingIn: false,
+
+};
 
 export const signupReducer = (state = initialState, action) => {
   switch(action.type) {
     case SIGNUP_START:
       return{
         ...state,
+        loggingIn: true,
       }
     case SIGNUP_SUCCESS:
       return{
         ...state,
+        loggingIn: false,
       }
     case SIGNUP_FAILURE:
       return {
