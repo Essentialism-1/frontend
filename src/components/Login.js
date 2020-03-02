@@ -10,51 +10,53 @@ const Login = () => {
 
   const onSubmit = data => {
     axiosWithAuth()
-    .post('/login')
+      .post('/login')
     console.log('onSubmit pre-');
     // waiting for endpoint ^^
   };
 
   return (
     <div className='login-page'>
-      <h2>Login</h2>
+      <div>
+        <h2>Login</h2>
+      </div>
       <Form className='login-forms'>
         <FormGroup className='login-groups'>
           <label htmlFor='email'>Email</label>
-          <input 
-            name='email'  
+          <input
+            name='email'
             type="email"
             id='email'
             autoComplete='off'
-            ref={register({ 
+            ref={register({
               required: 'Email required',
-            })} 
+            })}
           />
           {errors.email && <p>Email is required</p>}
         </FormGroup>
 
         <FormGroup className='login-groups'>
           <label htmlFor='email'>Password</label>
-          <input 
-            name='password'  
+          <input
+            name='password'
             type='password'
             id='password'
-            ref={register({ 
-              required: 'Password required', 
+            ref={register({
+              required: 'Password required',
               minLength: {
                 length: 8,
                 message: 'Password must contain at least 8 characters'
               }
-            })} 
+            })}
           />
-          {errors.password && errors.password.type 
-          === 'minLength' && 
-          <p>This field has a minimum of 5 characters</p>}
+          {errors.password && errors.password.type
+            === 'minLength' &&
+            <p>This field has a minimum of 5 characters</p>}
           {errors.password && <p>{errors.password.message}</p>}
           {/* you can put a className on <p> tag and change text color of error messages! */}
         </FormGroup>
 
-        <Button color='primary' type="submit">Login</Button>
+        <Button color='success' type="submit">Login</Button>
 
       </Form>
 
