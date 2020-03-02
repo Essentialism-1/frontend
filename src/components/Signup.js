@@ -28,7 +28,7 @@ const Signup = props => {
   const onSubmit = newUser => {
     signup(newUser);
     console.log('signup onsubmit', newUser);
-    props.history.push('/');
+    props.history.push('/select-values');
   }
 
   return (
