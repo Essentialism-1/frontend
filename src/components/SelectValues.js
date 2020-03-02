@@ -1,9 +1,12 @@
 import React from 'react';
-
+import Values from './Values';
 const SelectValues = () => {
 
   return(
-    <h2>Select Values Page</h2>
+    <div>
+      <h2>Select Values Page</h2>
+      {/* <Values /> */}
+    </div>
   )
 }
 
