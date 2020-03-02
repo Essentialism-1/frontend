@@ -1,5 +1,5 @@
 import React from 'react';
-import Values from './Values';
+// import Values from './Values';
 const SelectValues = () => {
 
   return(
