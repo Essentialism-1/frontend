@@ -1,14 +1,21 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { useForm } from 'react-hook-form';
+import { Link } from 'react-router-dom';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import './formStyle.css';
-import { axiosWithAuth } from '../utils/axiosWithAuth';
+// import { axiosWithAuth } from '../utils/axiosWithAuth';
+import { signup } from '../actions';
 
+import {
+  WhiteP
+} from '../styled/styledComponents';
 
 const Signup = props => {
 
   const { register, handleSubmit, errors } = useForm();
 
+<<<<<<< HEAD
   const onSubmit = data => {
     axiosWithAuth()
       .post('/login', data)
@@ -19,6 +26,23 @@ const Signup = props => {
       })
       .catch(err => console.log('signup onsubmit error', err))
   };
+=======
+  // const onSubmit = user => {
+  //   axiosWithAuth()
+  //   .post('/login', user)
+  //   // will update with endpoint ^^
+  //   .then(res => {
+  //     console.log(res.data);
+  //     props.history.push('/');
+  //   })
+  //   .catch(err => console.log('signup onsubmit error', err))
+  // };
+  const onSubmit = newUser => {
+    signup(newUser);
+    console.log('signup onsubmit', newUser);
+    props.history.push('/');
+  }
+>>>>>>> 9767143942bdc6bbbb079f0fc9844c8260595d68
 
   return (
 
@@ -61,8 +85,11 @@ const Signup = props => {
         <Button color='success' type='submit'>Sign Up!</Button>
         <Button color='primary'>Already have an account ?</Button>
       </Form>
+      <Link to='/'>
+        <WhiteP>Already have an account? Sign in.</WhiteP>
+      </Link>
     </div>
   )
 }
 
-export default Signup;
+export default connect(null, { signup })(Signup);

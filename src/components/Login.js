@@ -1,13 +1,21 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import './formStyle.css';
-import { axiosWithAuth } from '../utils/axiosWithAuth';
 
-const Login = () => {
+// import { axiosWithAuth } from '../utils/axiosWithAuth';
+import { login } from '../actions';
+import {
+  WhiteP
+} from '../styled/styledComponents';
+
+const Login = props => {
 
   const { register, handleSubmit, errors } = useForm();
 
+<<<<<<< HEAD
   const onSubmit = data => {
     axiosWithAuth()
       .post('/login')
@@ -21,6 +29,29 @@ const Login = () => {
         <h2>Login</h2>
       </div>
       <Form className='login-forms'>
+=======
+  // const onSubmit = credentials => {
+  //   axiosWithAuth()
+  //   .post('/auth/login', credentials)
+  //   .then(res => {
+  //     console.log('login onSubmit .then');
+  //     localStorage.setItem('token', res.data.payload);
+  //     props.history.push('/select-values')
+  //   })
+  //   .catch(err => console.log('login error', err))
+  // };
+
+  const onSubmit = credentials => {
+    login(credentials);
+    props.history.push('/select-values');
+  }
+  // probably going to need some conditional logic on the .push. or can I track that in state with some sort of 'hasSelectedChoices'? If the user has already selected values, they can go straight to dashboard after login.
+
+  return (
+    <div className='login-page'>
+      <h2>Login</h2>
+      <Form className='login-forms' onSubmit={handleSubmit(onSubmit)} >
+>>>>>>> 9767143942bdc6bbbb079f0fc9844c8260595d68
         <FormGroup className='login-groups'>
           <label htmlFor='email'>Email</label>
           <input
@@ -59,10 +90,12 @@ const Login = () => {
         <Button color='success' type="submit">Login</Button>
 
       </Form>
-
+      <Link to='/signup'>
+        <WhiteP>Don't have an account? Sign up!</WhiteP>
+      </Link>
     </div>
   )
 }
 // added spacing and a little more detail to form
 
-export default Login;
+export default connect(null, { login })(Login);
