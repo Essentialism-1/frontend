@@ -1,9 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import './formStyle.css';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
+import { signup } from '../actions';
 
 import {
   WhiteP
@@ -13,16 +15,21 @@ const Signup = props => {
 
   const { register, handleSubmit, errors } = useForm();
 
-  const onSubmit = data => {
-    axiosWithAuth()
-    .post('/login', data)
-    // will update with endpoint ^^
-    .then(res => {
-      console.log(data);
-      props.history.push('/');
-    })
-    .catch(err => console.log('signup onsubmit error', err))
-  };
+  // const onSubmit = user => {
+  //   axiosWithAuth()
+  //   .post('/login', user)
+  //   // will update with endpoint ^^
+  //   .then(res => {
+  //     console.log(res.data);
+  //     props.history.push('/');
+  //   })
+  //   .catch(err => console.log('signup onsubmit error', err))
+  // };
+  const onSubmit = newUser => {
+    signup(newUser);
+    console.log('signup onsubmit', newUser);
+    props.history.push('/');
+  }
 
   return (
     <div className='signUp'>
@@ -66,4 +73,4 @@ const Signup = props => {
   )
 }
 
-export default Signup;
+export default connect(null, { signup })(Signup);

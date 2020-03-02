@@ -1,29 +1,39 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import './formStyle.css';
-import { axiosWithAuth } from '../utils/axiosWithAuth';
 
+import { axiosWithAuth } from '../utils/axiosWithAuth';
+import { login } from '../actions';
 import {
   WhiteP
 } from '../styled/styledComponents';
 
-const Login = () => {
+const Login = props => {
 
   const { register, handleSubmit, errors } = useForm();
 
-  const onSubmit = data => {
-    axiosWithAuth()
-    .post('/login')
-    console.log('onSubmit pre-');
-    // waiting for endpoint ^^
-  };
+  // const onSubmit = credentials => {
+  //   axiosWithAuth()
+  //   .post('/auth/login', credentials)
+  //   .then(res => {
+  //     console.log('login onSubmit .then');
+  //     localStorage.setItem('token', res.data.payload);
+  //     props.history.push('/select-values')
+  //   })
+  //   .catch(err => console.log('login error', err))
+  // };
 
+  const onSubmit = credentials => {
+    login(credentials);
+    props.history.push('/select-values');
+  }
   return (
     <div className='login-page'>
       <h2>Login</h2>
-      <Form className='login-forms'>
+      <Form className='login-forms' onSubmit={handleSubmit(onSubmit)} >
         <FormGroup className='login-groups'>
           <label htmlFor='email'>Email</label>
           <input 
@@ -70,4 +80,4 @@ const Login = () => {
 }
 // added spacing and a little more detail to form
 
-export default Login;
+export default connect(null, { login })(Login);

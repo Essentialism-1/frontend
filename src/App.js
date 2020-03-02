@@ -7,7 +7,7 @@ import PrivateRoute from './components/PrivateRoute';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import Navigation from './components/Navigation';
-import ChooseValues from './components/ChooseValues';
+import SelectValues from './components/SelectValues';
 
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
       <Route exact path='/' component={Login} />
       <Route path='/signup' component={Signup} />
 
-      <PrivateRoute path='/select-values' component={ChooseValues} />
+      <PrivateRoute path='/select-values' component={SelectValues} />
       <PrivateRoute path='/values-dashbaord' />
       <PrivateRoute path='/dashbaord' />
       {/* <PrivateRoute path='/' /> */}

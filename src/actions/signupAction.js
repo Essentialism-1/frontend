@@ -4,12 +4,12 @@ export const SIGNUP_START = 'SIGNUP_START';
 export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
 export const SIGNUP_FAILURE = 'SIGNUP_FAILURE';
 
-export const signup = user => dispatch => {
+export const signup = newUser => dispatch => {
   console.log('signup action firing');
   dispatch({ type: SIGNUP_START });
   return (
     axiosWithAuth()
-    .post('/auth/register', user)
+    .post('/auth/register', newUser)
     .then(res => {
       console.log('signup action.then', res);
       // localStorage.setItem('token', res.data.token);
@@ -18,7 +18,7 @@ export const signup = user => dispatch => {
     })
     .catch(err => {
       console.log('Signup action error', err);
-      dispatch({ type: SIGNUP_FAILURE });
+      dispatch({ type: SIGNUP_FAILURE, payload: err });
     })
   );
 };
