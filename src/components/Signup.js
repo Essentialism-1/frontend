@@ -16,6 +16,7 @@ const Signup = props => {
   const { register, handleSubmit, errors } = useForm();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   const onSubmit = data => {
     axiosWithAuth()
       .post('/login', data)
@@ -27,6 +28,8 @@ const Signup = props => {
       .catch(err => console.log('signup onsubmit error', err))
   };
 =======
+=======
+>>>>>>> 2e4661ac97e34b4f95a1061c8f4ac0ff30fcf22b
   // const onSubmit = user => {
   //   axiosWithAuth()
   //   .post('/login', user)
@@ -42,7 +45,10 @@ const Signup = props => {
     console.log('signup onsubmit', newUser);
     props.history.push('/');
   }
+<<<<<<< HEAD
 >>>>>>> 9767143942bdc6bbbb079f0fc9844c8260595d68
+=======
+>>>>>>> 2e4661ac97e34b4f95a1061c8f4ac0ff30fcf22b
 
   return (
 

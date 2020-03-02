@@ -16,6 +16,7 @@ const Login = props => {
   const { register, handleSubmit, errors } = useForm();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   const onSubmit = data => {
     axiosWithAuth()
       .post('/login')
@@ -30,6 +31,9 @@ const Login = props => {
       </div>
       <Form className='login-forms'>
 =======
+=======
+
+>>>>>>> 2e4661ac97e34b4f95a1061c8f4ac0ff30fcf22b
   // const onSubmit = credentials => {
   //   axiosWithAuth()
   //   .post('/auth/login', credentials)
@@ -51,7 +55,10 @@ const Login = props => {
     <div className='login-page'>
       <h2>Login</h2>
       <Form className='login-forms' onSubmit={handleSubmit(onSubmit)} >
+<<<<<<< HEAD
 >>>>>>> 9767143942bdc6bbbb079f0fc9844c8260595d68
+=======
+>>>>>>> 2e4661ac97e34b4f95a1061c8f4ac0ff30fcf22b
         <FormGroup className='login-groups'>
           <label htmlFor='email'>Email</label>
           <input
