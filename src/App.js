@@ -13,13 +13,14 @@ import SelectValues from './components/SelectValues';
 function App() {
   return (
     <div className="App">
-      <h1>Essentialism</h1>
+
+      <Navigation />
       <Route exact path='/' component={Login} />
       <Route path='/signup' component={Signup} />
 
       <PrivateRoute path='/select-values' component={SelectValues} />
-      <PrivateRoute path='/values-dashbaord' />
-      <PrivateRoute path='/dashbaord' />
+      <PrivateRoute path='/values-dashboard' />
+      <PrivateRoute path='/dashboard' />
       {/* <PrivateRoute path='/' /> */}
     </div>
   );

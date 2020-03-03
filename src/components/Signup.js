@@ -8,48 +8,19 @@ import './formStyle.css';
 import { signup } from '../actions';
 
 import {
-  WhiteP
+  WhiteP,
+  RedError,
 } from '../styled/styledComponents';
 
 const Signup = props => {
 
   const { register, handleSubmit, errors } = useForm();
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-  const onSubmit = data => {
-    axiosWithAuth()
-      .post('/login', data)
-      // will update with endpoint ^^
-      .then(res => {
-        console.log(data);
-        props.history.push('/');
-      })
-      .catch(err => console.log('signup onsubmit error', err))
-  };
-=======
-=======
->>>>>>> 2e4661ac97e34b4f95a1061c8f4ac0ff30fcf22b
-  // const onSubmit = user => {
-  //   axiosWithAuth()
-  //   .post('/login', user)
-  //   // will update with endpoint ^^
-  //   .then(res => {
-  //     console.log(res.data);
-  //     props.history.push('/');
-  //   })
-  //   .catch(err => console.log('signup onsubmit error', err))
-  // };
   const onSubmit = newUser => {
     signup(newUser);
     console.log('signup onsubmit', newUser);
     props.history.push('/');
   }
-<<<<<<< HEAD
->>>>>>> 9767143942bdc6bbbb079f0fc9844c8260595d68
-=======
->>>>>>> 2e4661ac97e34b4f95a1061c8f4ac0ff30fcf22b
-
   return (
 
     <div className='signup-container'>
@@ -59,22 +30,23 @@ const Signup = props => {
 
       <Form className='login-forms' onSubmit={handleSubmit(onSubmit)}>
 
-        {/* <FormGroup className='sign-up'>
-          <label>First Name:</label>
-          <input autoComplete='off' name='firstName' ref={register({ required: true, minLength: 2 })} />
-          {errors.firstName && <p>Name is required</p>}
+        <FormGroup className='sign-up'>
+          <label>Full Name:</label>
+          <input
+            autoComplete='off'
+            name='fullName'
+            ref={register({ required: true, minLength: 2 })} />
+          {errors.fullName && <RedError>Full name is required</RedError>}
         </FormGroup>
-
-        <FormGroup>
-          <label>Last Name:</label>
-          <input autoComplete='off' name='lastName' ref={register({ required: true, minLength: 2 })} />
-          {errors.lastName && <p>Name is required</p>}
-        </FormGroup> */}
 
         <FormGroup className='sign-up'>
           <label>Email:</label>
-          <input autoComplete='off' name='email' type='email' ref={register({ required: true, })} />
-          {errors.email && <p>Email is required</p>}
+          <input
+            autoComplete='off'
+            name='email'
+            type='email'
+            ref={register({ required: true, })} />
+          {errors.email && <RedError>Email is required</RedError>}
         </FormGroup>
 
         <FormGroup className='sign-up'>
@@ -84,12 +56,12 @@ const Signup = props => {
             name='password'
             ref={register({ required: true, minLength: 5 })} />
           {errors.password && errors.password.type === 'minLength' &&
-            <p>This field has a minimum of 5 characters</p>}
-          {errors.password && <p>Password is required</p>}
+            <RedError>This field has a minimum of 5 characters</RedError>}
+          {errors.password && <RedError>Password is required</RedError>}
 
         </FormGroup>
         <Button color='success' type='submit'>Sign Up!</Button>
-        <Button color='primary'>Already have an account ?</Button>
+
       </Form>
       <Link to='/'>
         <WhiteP>Already have an account? Sign in.</WhiteP>

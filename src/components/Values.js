@@ -12,7 +12,7 @@ const Values = () => {
   return (
     <div className='value-list'>
       {values.map(value => {
-        return(
+        return (
           <div key={value.value_id} className='value-button'>
             <p>{value.description}</p>
           </div>

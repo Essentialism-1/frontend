@@ -5,6 +5,12 @@ const WhiteP = styled.p`
   color: white;
 `;
 
+const RedError = styled.p`
+  color: red;
+  font-size: 1rem;
+`
+
 export {
   WhiteP,
+  RedError
 };
