@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { Route, Switch, Link } from 'react-router-dom';
 
 import PrivateRoute from './components/PrivateRoute';
 
@@ -14,13 +14,16 @@ function App() {
   return (
     <div className="App">
       <h1>Essentialism</h1>
-      <Route exact path='/' component={Login} />
-      <Route path='/signup' component={Signup} />
+      <Switch>
+        <Route path='/signup' component={Signup} />
+        
+        <PrivateRoute exact path='/select-values' component={SelectValues} />
+        {/* <PrivateRoute path='/values-dashboard' />
+        <PrivateRoute path='/dashboard' /> */}
+        {/* <PrivateRoute path='/' /> */}
+        <Route  path='/' component={Login} />
 
-      <PrivateRoute path='/select-values' component={SelectValues} />
-      <PrivateRoute path='/values-dashbaord' />
-      <PrivateRoute path='/dashbaord' />
-      {/* <PrivateRoute path='/' /> */}
+      </Switch>
     </div>
   );
 }

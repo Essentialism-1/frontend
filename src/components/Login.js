@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import './formStyle.css';
+import { useHistory } from 'react-router-dom';
 
 // import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { login } from '../actions';
@@ -12,8 +13,10 @@ import {
 } from '../styled/styledComponents';
 
 const Login = props => {
+  let history = useHistory();
 
   const { register, handleSubmit, errors } = useForm();
+
 
   // const onSubmit = credentials => {
   //   axiosWithAuth()
@@ -27,8 +30,9 @@ const Login = props => {
   // };
 
   const onSubmit = credentials => {
-    login(credentials);
-    props.history.push('/select-values');
+    props.login(credentials);
+    console.log('login onsubmit', credentials)
+    history.push('/select-values');
   }
   // probably going to need some conditional logic on the .push. or can I track that in state with some sort of 'hasSelectedChoices'? If the user has already selected values, they can go straight to dashboard after login.
 
@@ -38,40 +42,40 @@ const Login = props => {
       <Form className='login-forms' onSubmit={handleSubmit(onSubmit)} >
         <FormGroup className='login-groups'>
           <label htmlFor='email'>Email</label>
-          <input 
-            name='email'  
+          <input
+            name='email'
             type="email"
             id='email'
             autoComplete='off'
-            ref={register({ 
+            ref={register({
               required: 'Email required',
-            })} 
+            })}
           />
           {errors.email && <p>Email is required</p>}
         </FormGroup>
 
         <FormGroup className='login-groups'>
           <label htmlFor='email'>Password</label>
-          <input 
-            name='password'  
+          <input
+            name='password'
             type='password'
             id='password'
-            ref={register({ 
-              required: 'Password required', 
+            ref={register({
+              required: 'Password required',
               minLength: {
                 length: 8,
                 message: 'Password must contain at least 8 characters'
               }
-            })} 
+            })}
           />
-          {errors.password && errors.password.type 
-          === 'minLength' && 
-          <p>This field has a minimum of 5 characters</p>}
+          {errors.password && errors.password.type
+            === 'minLength' &&
+            <p>This field has a minimum of 5 characters</p>}
           {errors.password && <p>{errors.password.message}</p>}
           {/* you can put a className on <p> tag and change text color of error messages! */}
         </FormGroup>
 
-        <Button color='primary' type="submit">Login</Button>
+        <Button color='success' type="submit">Login</Button>
 
       </Form>
       <Link to='/signup'>

@@ -17,7 +17,7 @@ export const login = credentials => dispatch => {
     .then(res => {
       console.log('login.then', res);
       localStorage.setItem('token', res.data.token) 
-      //probably .data.payload -- it'll depend on backend endpoint ^^
+      localStorage.setItem('userId', res.data.user.id)
       dispatch({ type: LOGIN_SUCCESS, payload: res.data }); // res.data.???? need endpoint
     })
     .catch(err => {
@@ -34,10 +34,10 @@ export const signup = newUser => dispatch => {
     axiosWithAuth()
     .post('/auth/register', newUser)
     .then(res => {
-      console.log('signup action.then', res);
-      // localStorage.setItem('token', res.data.token);
+      console.log('signup action.then', res.data);
+      localStorage.setItem('token', res.data.token);
       // not sure I need the above in signup, only login^^
-      dispatch({ type: SIGNUP_SUCCESS, payload: res.data });
+      dispatch({ type: SIGNUP_SUCCESS, payload: res.data.token });
     })
     .catch(err => {
       console.log('Signup action error', err);

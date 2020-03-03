@@ -1,17 +1,20 @@
+@import url('https://fonts.googleapis.com/css?family=Comfortaa&display=swap');
+
 *{
   box-sizing: border-box;
+  font-family: 'Comfortaa', sans-serif;
 }
 
 /* Sign Up Form Styles */
 
-.signUp{
+.signup-container{
   width: 100%;
   height: 100vh;
-  padding-top: 10% ;
+  padding-top: 5% ;
   background: linear-gradient(122.25deg, #2F80ED 34.51%, rgba(0, 96, 225, 0) 77.11%), linear-gradient(125.42deg, #2F80ED 0%, #065BCE 100%);
 }
 
-.login-form {
+.login-forms{
   width: 50%;
   display: flex;
   flex-direction: column;
@@ -22,16 +25,23 @@
   background-color: white ;
   border-radius: 15px;
 }
+.signup-container h1{
+  color:white;
+  padding-bottom:1%;
+  font-size: 3rem;
+  font-family: 'Comfortaa', sans-serif;
+}
 
 .sign-up{
-  height:100%;
+  height:20%;
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: space-evenly;
   font-size: 1.1rem;
 }
 
-.login-form input {
+.login-forms input {
   width: 50px 100px;
   background-color: rgb(241, 236, 236);
   border-radius: 5px;
@@ -48,12 +58,15 @@
 
 .login-page h2{
   color:white;
+  padding-bottom:1%;
+  font-size: 3rem;
+  font-family: 'Comfortaa', sans-serif;
 }
 
 .login-forms{
    background: white;
    height: 60%;
-   width: 50%;
+   width: 40%;
    margin: 0 auto;
    display:flex;
    flex-direction: column;
@@ -68,7 +81,7 @@
   font-size: 1.2rem;
 }
 
-.login-groups input{
+.sign-up input{
   width: 50px 100px;
   background-color: rgb(241, 236, 236);
   border-radius: 5px;
