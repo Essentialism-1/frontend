@@ -1,13 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { fetchValues } from '../actions/';
+import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 const Values = () => {
-  // const [values, setValues ] = useState([]);
+  const [values, setValues ] = useState([]);
 
+  // useEffect(() => {
+  //   fetchValues(setValues);
+  // });
+  // how can I add setValues to fetchValues when it's setup in an action creator?
   useEffect(() => {
-    fetchValues();
-  });
+    axiosWithAuth()
+    .get('/values')
+    .then(res => {
+      console.log('get values', res);
+      setValues(res.data);
+    })
+    .catch(err => console.log('get values error', err))
+  }, []);
 
   return (
     <div className='value-list'>

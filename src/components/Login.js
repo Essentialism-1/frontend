@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import './formStyle.css';
+import { useHistory } from 'react-router-dom';
 
 // import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { login } from '../actions';
@@ -13,13 +14,20 @@ import {
 } from '../styled/styledComponents';
 
 const Login = props => {
+  let history = useHistory();
 
   const { register, handleSubmit, errors } = useForm();
 
   const onSubmit = credentials => {
-    login(credentials);
-    props.history.push('/select-values');
+    props.login(credentials, props.history);
+    console.log('login onsubmit', credentials)
   }
+  // const onSubmit = credentials => {
+  //   props.login(credentials);
+  //   console.log('login onsubmit', credentials);
+  //   history.push('/select-values');
+  // }
+
   // probably going to need some conditional logic on the .push. or can I track that in state with some sort of 'hasSelectedChoices'? If the user has already selected values, they can go straight to dashboard after login.
 
   return (
