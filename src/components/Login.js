@@ -30,10 +30,15 @@ const Login = props => {
   // };
 
   const onSubmit = credentials => {
-    props.login(credentials);
+    props.login(credentials, props.history);
     console.log('login onsubmit', credentials)
-    history.push('/select-values');
   }
+  // const onSubmit = credentials => {
+  //   props.login(credentials);
+  //   console.log('login onsubmit', credentials);
+  //   history.push('/select-values');
+  // }
+
   // probably going to need some conditional logic on the .push. or can I track that in state with some sort of 'hasSelectedChoices'? If the user has already selected values, they can go straight to dashboard after login.
 
   return (

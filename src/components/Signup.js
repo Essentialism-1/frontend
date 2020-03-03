@@ -27,11 +27,9 @@ const Signup = props => {
   //   })
   //   .catch(err => console.log('signup onsubmit error', err))
   // };
-  const onSubmit = newUser => {
-    props.signup(newUser);
+  const onSubmit = (newUser, history) => {
+    props.signup(newUser, props.history);
     console.log('signup onsubmit', newUser);
-    history.push('/select-values');
-
   }
 
   return (
