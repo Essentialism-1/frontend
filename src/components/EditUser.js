@@ -1,46 +1,37 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
-import { Button, Form, FormGroup } from 'reactstrap';
-import './formStyle.css';
-// import { axiosWithAuth } from '../utils/axiosWithAuth';
-import { signup } from '../actions';
+import React, { useEffect, useState } from 'react';
 
+import { useForm } from 'react-hook-form';
+import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Link } from 'react-router-dom';
+import './formStyle.css';
 import {
   WhiteP,
   RedError,
 } from '../styled/styledComponents';
 
-const Signup = props => {
+
+const EditUser = () => {
 
   const { register, handleSubmit, errors } = useForm();
 
-  const onSubmit = newUser => {
-    signup(newUser);
-    console.log('signup onsubmit', newUser);
-    props.history.push('/');
-  }
   return (
+    <div className='editUser-container'>
 
-    <div className='signup-container'>
-      <div>
-        <h1>Sign Up</h1>
-      </div>
+      <h1>Edit Account</h1>
+      <Form className='edit-form'>
 
-      <Form className='login-forms' onSubmit={handleSubmit(onSubmit)}>
-
-        <FormGroup className='sign-up'>
-          <label>Full Name:</label>
+        <FormGroup className='editUser'>
+          <label>Edit Full Name:</label>
           <input
             autoComplete='off'
             name='fullName'
             ref={register({ required: true, minLength: 2 })} />
-          {errors.fullName && <RedError>Full name is required</RedError>}
+          {errors.fullName &&
+            <RedError>Full name is required</RedError>}
         </FormGroup>
 
         <FormGroup className='sign-up'>
-          <label>Email:</label>
+          <label>Edit Email:</label>
           <input
             autoComplete='off'
             name='email'
@@ -49,8 +40,8 @@ const Signup = props => {
           {errors.email && <RedError>Email is required</RedError>}
         </FormGroup>
 
-        <FormGroup className='sign-up'>
-          <label>Password:</label>
+        <FormGroup className='editUser'>
+          <label>Edit Password:</label>
           <input
             type='password'
             name='password'
@@ -60,7 +51,9 @@ const Signup = props => {
           {errors.password && <RedError>Password is required</RedError>}
 
         </FormGroup>
-        <Button color='success' type='submit'>Sign Up!</Button>
+        <Button
+          color='success'
+          type='submit'>Edit Complete</Button>
 
       </Form>
       <Link to='/'>
@@ -70,4 +63,4 @@ const Signup = props => {
   )
 }
 
-export default connect(null, { signup })(Signup);
+export default EditUser;

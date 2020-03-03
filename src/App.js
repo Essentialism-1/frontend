@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import EditUser from './components/EditUser';
 
 import PrivateRoute from './components/PrivateRoute';
 
@@ -15,6 +16,7 @@ function App() {
     <div className="App">
 
       <Navigation />
+      <EditUser />
       <Route exact path='/' component={Login} />
       <Route path='/signup' component={Signup} />
 

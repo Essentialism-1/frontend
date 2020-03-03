@@ -24,7 +24,7 @@ const Login = props => {
 
   return (
     <div className='login-page'>
-      <h2>Login</h2>
+      <h1>Login</h1>
       <Form className='login-forms' onSubmit={handleSubmit(onSubmit)} >
 
         <FormGroup className='login-groups'>
