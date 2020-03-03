@@ -6,14 +6,16 @@ import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import './formStyle.css';
 // import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { signup } from '../actions';
+import { useHistory } from 'react-router-dom';
 
 import {
   WhiteP
 } from '../styled/styledComponents';
 
 const Signup = props => {
+  let history = useHistory();
 
-  const { register, handleSubmit, errors } = useForm();
+  const { register, handleSubmit, errors } = useForm({});
 
   // const onSubmit = user => {
   //   axiosWithAuth()
@@ -25,10 +27,9 @@ const Signup = props => {
   //   })
   //   .catch(err => console.log('signup onsubmit error', err))
   // };
-  const onSubmit = newUser => {
-    signup(newUser);
+  const onSubmit = (newUser, history) => {
+    props.signup(newUser, props.history);
     console.log('signup onsubmit', newUser);
-    props.history.push('/');
   }
 
   return (
@@ -54,7 +55,14 @@ const Signup = props => {
 
         <FormGroup className='sign-up'>
           <label>Email:</label>
-          <input autoComplete='off' name='email' type='email' ref={register({ required: true, })} />
+          <input 
+            autoComplete='off' 
+            name='email' 
+            type='email' 
+            ref={register({ 
+              required: true, 
+            })} 
+          />
           {errors.email && <p>Email is required</p>}
         </FormGroup>
 
@@ -63,11 +71,26 @@ const Signup = props => {
           <input
             type='password'
             name='password'
-            ref={register({ required: true, minLength: 5 })} />
+            ref={register({ 
+              required: true, 
+              minLength: 5,
+            })} 
+          />
           {errors.password && errors.password.type === 'minLength' &&
             <p>This field has a minimum of 5 characters</p>}
           {errors.password && <p>Password is required</p>}
 
+        </FormGroup>
+
+        <FormGroup className='sign-up'>
+          <label>Name</label>
+          <input
+            type='text'
+            name='name'
+            ref={register({
+              required: false,
+            })}
+          />
         </FormGroup>
         <Button color='success' type='submit'>Sign Up!</Button>
         <Button color='primary'>Already have an account ?</Button>
