@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Button, Form, FormGroup } from 'reactstrap';
 import './formStyle.css';
 // import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { signup } from '../actions';
