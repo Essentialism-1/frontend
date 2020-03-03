@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { Route, Switch, Link } from 'react-router-dom';
 
 import PrivateRoute from './components/PrivateRoute';
 
@@ -13,15 +13,21 @@ import SelectValues from './components/SelectValues';
 function App() {
   return (
     <div className="App">
-
       <Navigation />
-      <Route exact path='/' component={Login} />
-      <Route path='/signup' component={Signup} />
+      <h1>Essentialism</h1>
+      <Switch>
+        <Route exact path='/' component={Login} />
 
-      <PrivateRoute path='/select-values' component={SelectValues} />
-      <PrivateRoute path='/values-dashboard' />
-      <PrivateRoute path='/dashboard' />
-      {/* <PrivateRoute path='/' /> */}
+        <Route path='/signup' component={Signup} />
+        
+        <PrivateRoute exact path='/select-values' component={SelectValues} />
+        {/* <PrivateRoute path='/values-dashboard' />
+        <PrivateRoute path='/dashboard' /> */}
+        {/* <PrivateRoute path='/' /> */}
+
+
+      </Switch>
+
     </div>
   );
 }
