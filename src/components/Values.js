@@ -14,7 +14,7 @@ const Values = () => {
     axiosWithAuth()
     .get('/values')
     .then(res => {
-      console.log('get values', res);
+      // console.log('get values', res.data);
       setValues(res.data);
     })
     .catch(err => console.log('get values error', err))
@@ -22,16 +22,14 @@ const Values = () => {
 
   return (
     <div className='value-list'>
-      {values.map(value => {
-        return (
-          <div key={value.value_id} className='value-button'>
-            <p>{value.description}</p>
+      {values.map(value => (
+          <div key={value.id} className='value-button'>
+            <button>{value.value}</button>
           </div>
-        )
-      })}
+        ))}
     </div>
-  )
-}
+  );
+};
 
 const mapStateToProps = state => {
   return {
