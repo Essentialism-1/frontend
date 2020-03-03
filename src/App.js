@@ -13,6 +13,7 @@ import SelectValues from './components/SelectValues';
 function App() {
   return (
     <div className="App">
+      <Navigation />
       <h1>Essentialism</h1>
       <Switch>
         <Route exact path='/' component={Login} />
@@ -26,6 +27,7 @@ function App() {
 
 
       </Switch>
+
     </div>
   );
 }

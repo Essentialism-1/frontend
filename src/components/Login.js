@@ -9,25 +9,14 @@ import { useHistory } from 'react-router-dom';
 // import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { login } from '../actions';
 import {
-  WhiteP
+  WhiteP,
+  RedError
 } from '../styled/styledComponents';
 
 const Login = props => {
   let history = useHistory();
 
   const { register, handleSubmit, errors } = useForm();
-
-
-  // const onSubmit = credentials => {
-  //   axiosWithAuth()
-  //   .post('/auth/login', credentials)
-  //   .then(res => {
-  //     console.log('login onSubmit .then');
-  //     localStorage.setItem('token', res.data.payload);
-  //     props.history.push('/select-values')
-  //   })
-  //   .catch(err => console.log('login error', err))
-  // };
 
   const onSubmit = credentials => {
     props.login(credentials, props.history);
@@ -45,6 +34,7 @@ const Login = props => {
     <div className='login-page'>
       <h2>Login</h2>
       <Form className='login-forms' onSubmit={handleSubmit(onSubmit)} >
+
         <FormGroup className='login-groups'>
           <label htmlFor='email'>Email</label>
           <input
@@ -56,7 +46,7 @@ const Login = props => {
               required: 'Email required',
             })}
           />
-          {errors.email && <p>Email is required</p>}
+          {errors.email && <RedError>Email is required</RedError>}
         </FormGroup>
 
         <FormGroup className='login-groups'>
@@ -75,8 +65,8 @@ const Login = props => {
           />
           {errors.password && errors.password.type
             === 'minLength' &&
-            <p>This field has a minimum of 5 characters</p>}
-          {errors.password && <p>{errors.password.message}</p>}
+            <RedError>This field has a minimum of 5 characters</RedError>}
+          {errors.password && <RedError>{errors.password.message}</RedError>}
           {/* you can put a className on <p> tag and change text color of error messages! */}
         </FormGroup>
 

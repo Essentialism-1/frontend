@@ -9,7 +9,8 @@ import { signup } from '../actions';
 import { useHistory } from 'react-router-dom';
 
 import {
-  WhiteP
+  WhiteP,
+  RedError,
 } from '../styled/styledComponents';
 
 const Signup = props => {
@@ -31,7 +32,6 @@ const Signup = props => {
     props.signup(newUser, props.history);
     console.log('signup onsubmit', newUser);
   }
-
   return (
 
     <div className='signup-container'>
@@ -41,17 +41,14 @@ const Signup = props => {
 
       <Form className='login-forms' onSubmit={handleSubmit(onSubmit)}>
 
-        {/* <FormGroup className='sign-up'>
-          <label>First Name:</label>
-          <input autoComplete='off' name='firstName' ref={register({ required: true, minLength: 2 })} />
-          {errors.firstName && <p>Name is required</p>}
+        <FormGroup className='sign-up'>
+          <label>Full Name:</label>
+          <input
+            autoComplete='off'
+            name='fullName'
+            ref={register({ required: true, minLength: 2 })} />
+          {errors.fullName && <RedError>Full name is required</RedError>}
         </FormGroup>
-
-        <FormGroup>
-          <label>Last Name:</label>
-          <input autoComplete='off' name='lastName' ref={register({ required: true, minLength: 2 })} />
-          {errors.lastName && <p>Name is required</p>}
-        </FormGroup> */}
 
         <FormGroup className='sign-up'>
           <label>Email:</label>
@@ -63,7 +60,8 @@ const Signup = props => {
               required: true, 
             })} 
           />
-          {errors.email && <p>Email is required</p>}
+          {errors.email && <RedError>Email is required</RedError>}
+
         </FormGroup>
 
         <FormGroup className='sign-up'>
@@ -77,8 +75,8 @@ const Signup = props => {
             })} 
           />
           {errors.password && errors.password.type === 'minLength' &&
-            <p>This field has a minimum of 5 characters</p>}
-          {errors.password && <p>Password is required</p>}
+            <RedError>This field has a minimum of 5 characters</RedError>}
+          {errors.password && <RedError>Password is required</RedError>}
 
         </FormGroup>
 
@@ -93,7 +91,7 @@ const Signup = props => {
           />
         </FormGroup>
         <Button color='success' type='submit'>Sign Up!</Button>
-        <Button color='primary'>Already have an account ?</Button>
+
       </Form>
       <Link to='/'>
         <WhiteP>Already have an account? Sign in.</WhiteP>
