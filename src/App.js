@@ -8,6 +8,7 @@ import Login from './components/Login';
 import Signup from './components/Signup';
 import Navigation from './components/Navigation';
 import SelectValues from './components/SelectValues';
+import UserList from './components/UserList';
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
     <div className="App">
       <Navigation />
       <h1>Essentialism</h1>
+
       <Switch>
         <Route exact path='/' component={Login} />
 
