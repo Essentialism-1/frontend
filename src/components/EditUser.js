@@ -25,7 +25,8 @@ const EditUser = () => {
           <input
             autoComplete='off'
             name='fullName'
-            ref={register({ required: true, minLength: 2 })} />
+            ref={register({ required: true, minLength: 2 })}
+          />
           {errors.fullName &&
             <RedError>Full name is required</RedError>}
         </FormGroup>
@@ -36,7 +37,8 @@ const EditUser = () => {
             autoComplete='off'
             name='email'
             type='email'
-            ref={register({ required: true, })} />
+            ref={register({ required: true, })}
+          />
           {errors.email && <RedError>Email is required</RedError>}
         </FormGroup>
 
@@ -45,7 +47,8 @@ const EditUser = () => {
           <input
             type='password'
             name='password'
-            ref={register({ required: true, minLength: 5 })} />
+            ref={register({ required: true, minLength: 5 })}
+          />
           {errors.password && errors.password.type === 'minLength' &&
             <RedError>This field has a minimum of 5 characters</RedError>}
           {errors.password && <RedError>Password is required</RedError>}
