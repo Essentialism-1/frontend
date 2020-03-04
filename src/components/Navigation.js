@@ -11,7 +11,7 @@ const Navigation = () => {
 
         <h1 className='navbar-brand text-dark'>
           Essentialism  {' '}
-          <i class="fa fa-calendar-check-o" />
+          <i className="fa fa-calendar-check-o" />
         </h1>
 
 
