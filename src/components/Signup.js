@@ -35,11 +35,21 @@ const Signup = props => {
   return (
 
     <div className='signup-container'>
-      <div>
-        <h1>Sign Up</h1>
-      </div>
+      <h1>Sign Up</h1>
+
 
       <Form className='login-forms' onSubmit={handleSubmit(onSubmit)}>
+
+        <FormGroup className='sign-up'>
+          <label>Name</label>
+          <input
+            type='text'
+            name='name'
+            ref={register({
+              required: false,
+            })}
+          />
+        </FormGroup>
 
         <FormGroup className='sign-up'>
           <label>Email:</label>
@@ -71,16 +81,6 @@ const Signup = props => {
 
         </FormGroup>
 
-        <FormGroup className='sign-up'>
-          <label>Name</label>
-          <input
-            type='text'
-            name='name'
-            ref={register({
-              required: false,
-            })}
-          />
-        </FormGroup>
         <Button color='success' type='submit'>Sign Up!</Button>
 
       </Form>
