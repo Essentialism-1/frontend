@@ -10,6 +10,7 @@ import Navigation from './components/Navigation';
 import SelectValues from './components/SelectValues';
 import ValuesDashboard from './components/ValuesDashboard';
 import EditUser from './components/EditUser';
+import UserList from './components/UserList';
 
 
 
@@ -17,10 +18,11 @@ function App() {
   return (
     <div className="App">
       <Navigation />
+
       <Switch>
         <Route exact path='/' component={Login} />
         <Route path='/signup' component={Signup} />
-        
+
         <PrivateRoute exact path='/select-values' component={SelectValues} />
         <PrivateRoute path='/values-dashboard' component={ValuesDashboard}/>
         <PrivateRoute path='/dashboard' />
@@ -28,8 +30,8 @@ function App() {
       </Switch>
       
       {/* temp edit user links */}
-      <Link to='/edit-user' >Edit User Link</Link>
-      <Route exact path='/edit-user' component={EditUser} />
+      {/* <Link to='/edit-user' >Edit User Link</Link>
+      <Route exact path='/edit-user' component={EditUser} /> */}
 
     </div>
   );

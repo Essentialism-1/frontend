@@ -39,23 +39,14 @@ const Signup = props => {
       <Form className='login-forms' onSubmit={handleSubmit(onSubmit)}>
 
         <FormGroup className='sign-up'>
-          <label>Full Name:</label>
+          <label>Email:</label>
           <input
             autoComplete='off'
-            name='fullName'
-            ref={register({ required: true, minLength: 2 })} />
-          {errors.fullName && <RedError>Full name is required</RedError>}
-        </FormGroup>
-
-        <FormGroup className='sign-up'>
-          <label>Email:</label>
-          <input 
-            autoComplete='off' 
-            name='email' 
-            type='email' 
-            ref={register({ 
-              required: true, 
-            })} 
+            name='email'
+            type='email'
+            ref={register({
+              required: true,
+            })}
           />
           {errors.email && <RedError>Email is required</RedError>}
 
@@ -66,10 +57,10 @@ const Signup = props => {
           <input
             type='password'
             name='password'
-            ref={register({ 
-              required: true, 
+            ref={register({
+              required: true,
               minLength: 5,
-            })} 
+            })}
           />
           {errors.password && errors.password.type === 'minLength' &&
             <RedError>This field has a minimum of 5 characters</RedError>}

@@ -169,3 +169,51 @@
   border-color:  rgb(170, 165, 165);
 }
 
+/* User List  */
+.userList{
+  height: 100vh;
+  width: 80%;
+  margin: auto;
+  background-color: darkgrey;
+}
+
+.user-list{
+  background-color: rgb(129, 122, 122);
+  /* width: 100%; */
+  height: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.user-list2{
+  background-color: rgb(165, 196, 165);
+  width: 20%;
+  height: 20%;
+  margin: 2%;
+  padding: 2%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.search-users{
+  width: 80%;
+  margin: auto;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
+.search-field input{
+  padding: .5rem 1rem;
+  border-radius: 10px;
+}
+
+.font-title{
+  font-size: 1.5rem ;
+}
+
+.font-email{
+  font-size: 1.3rem;
+}
