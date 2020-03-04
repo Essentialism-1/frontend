@@ -6,7 +6,6 @@ import { Button, Form, FormGroup } from 'reactstrap';
 import './formStyle.css';
 // import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { signup } from '../actions';
-import { useHistory } from 'react-router-dom';
 
 import {
   WhiteP,
@@ -14,8 +13,6 @@ import {
 } from '../styled/styledComponents';
 
 const Signup = props => {
-  let history = useHistory();
-
   const { register, handleSubmit, errors } = useForm({});
 
   // const onSubmit = user => {

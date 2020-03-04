@@ -6,7 +6,6 @@ import {
 
 const initialState = {
   loggingIn: false,
-
 };
 
 export const signupReducer = (state = initialState, action) => {
@@ -24,6 +23,9 @@ export const signupReducer = (state = initialState, action) => {
     case SIGNUP_FAILURE:
       return {
         ...state,
+        loggingIn: false,
       }
+    default:
+      return state;
   }
 };

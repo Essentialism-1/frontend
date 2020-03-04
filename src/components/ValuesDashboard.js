@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ValuesDashboard = () => {
+const ValuesDashboard = props => {
   return (
     <div>
       <h1>Testing</h1>

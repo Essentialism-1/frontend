@@ -12,7 +12,6 @@ export const fetchValues = () => dispatch => {
   dispatch({ type: FETCH_VALUE_START });
   axiosWithAuth()
   .get('/values')
-  // get endpoint for stored values ^^
   .then(res => {
     console.log('fetchValue.then action', res);
     dispatch({ type: FETCH_VALUE_SUCCESS, payload: res.data});
@@ -27,7 +26,7 @@ export const fetchValueById = id => dispatch => {
   .get(`/user_values/:id`)
   // .get could possibly be incorrect ^^
   .then(res => {
-    console.log('fvbid.get', res);
+    console.log('fvbid.get', res.data);
     dispatch({ type: FETCH_VALUE_BY_ID_SUCCESS, payload: res.data})
   })
   .catch(err => console.log('fvbid.get error', err))
