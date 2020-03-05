@@ -9,6 +9,7 @@ import Signup from './components/Signup';
 import Navigation from './components/Navigation';
 import SelectValues from './components/SelectValues';
 import ValuesDashboard from './components/ValuesDashboard';
+import EditProject from './components/EditProject';
 import EditUser from './components/EditUser';
 import UserList from './components/UserList';
 import Dashboard from './components/Dashboard';
@@ -26,6 +27,7 @@ function App() {
         <PrivateRoute exact path='/select-values' component={SelectValues} />
         <PrivateRoute path='/values-dashboard' component={ValuesDashboard} />
         <PrivateRoute path='/dashboard' component={Dashboard} />
+        <PrivateRoute path='/edit-project' component={EditProject} />
         <PrivateRoute path='/' />
       </Switch>
       

@@ -10,6 +10,8 @@ export {
 } from './authActions';
 
 export {
+  editProject,
+  addEditProject,
   getUserProjects,
   postUserProject,
   postUserValues,
@@ -25,4 +27,6 @@ export {
   SET_USER_VALUES,
   SET_PROJECTS,
   FETCH_PROJECTS,
+  ADD_PROJECT_TO_EDIT,
+  UPDATE_PROJECTS,
 } from './valueActions';

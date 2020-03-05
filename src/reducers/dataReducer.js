@@ -5,12 +5,15 @@ import {
   SET_INTERMEDIATE_VALUES,
   SET_USER_VALUES,
   SET_PROJECTS,
-  FETCH_PROJECTS
+  FETCH_PROJECTS,
+  ADD_PROJECT_TO_EDIT,
+  UPDATE_PROJECTS,
 } from '../actions';
 
 const initialState = {
   values: [],
   projects: [],
+  projectToUpdate: {},
 }
 
 export const dataReducer = (state = initialState, action) => {
@@ -39,6 +42,17 @@ export const dataReducer = (state = initialState, action) => {
       return {
         ...state,
         projects: action.payload,
+      }
+    case ADD_PROJECT_TO_EDIT:
+      return {
+        ...state,
+        projectToUpdate: action.payload,
+      }
+    case UPDATE_PROJECTS:
+      let newProjects = state.projects.filter(project => project.id != action.payload.id)
+      return {
+        ...state,
+        projects: [...newProjects, action.payload],
       }
     default:
       return state
