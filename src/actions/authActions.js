@@ -20,7 +20,7 @@ export const login = (credentials, history) => dispatch => {
       localStorage.setItem('token', res.data.token) 
       localStorage.setItem('userId', res.data.user.id)
       dispatch({ type: LOGIN_SUCCESS, payload: res.data.token }); // res.data.???? need endpoint
-      history.push('/select-values');
+      history.push('/dashboard');
     })
     .catch(err => {
       console.log('loginAction error', err)
@@ -38,6 +38,7 @@ export const signup = (newUser, history) => dispatch => {
     .then(res => {
       console.log('signup action.then', res.data);
       localStorage.setItem('token', res.data.token);
+      localStorage.setItem('userId', res.data.user.id)
       dispatch({ type: SIGNUP_SUCCESS, payload: res.data.token });
       history.push('select-values');
     })

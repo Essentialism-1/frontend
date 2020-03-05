@@ -10,7 +10,10 @@ export {
 } from './authActions';
 
 export {
-  fetchValues,
+  getUserProjects,
+  postUserProject,
+  postUserValues,
+  intermediateValues,
   fetchValueById,
   FETCH_VALUE_START,
   FETCH_VALUE_SUCCESS,
@@ -18,4 +21,8 @@ export {
   FETCH_VALUE_BY_ID_START,
   FETCH_VALUE_BY_ID_SUCCESS,
   FETCH_VALUE_BY_ID_FAILURE,
+  SET_INTERMEDIATE_VALUES,
+  SET_USER_VALUES,
+  SET_PROJECTS,
+  FETCH_PROJECTS,
 } from './valueActions';

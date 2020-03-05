@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
-import { fetchValueById } from '../actions';
+import { fetchValueById, intermediateValues } from '../actions';
 
 const SelectValues = props => {
   const [values, setValues] = useState([]);
   const [selectedValues, setSelectedValues] = useState({
     values: [],
   });
+  const dispatch = useDispatch();
 
   // const id = localStorage.getItem('userId');
 
@@ -41,7 +42,7 @@ const SelectValues = props => {
   //   fetchId(props.match.params.id)
   // })
 
-  //`/uservalues/${id}` on next page!!!!
+  //`/user_values/${id}` on next page!!!!
 
   const addSelectedValues =( id, value ) => {
     if(selectedValues.values.length >= 3) {
@@ -51,10 +52,10 @@ const SelectValues = props => {
       // const myValue = e.target.value;
       // const selected = values.filter(clicked => myValue === clicked.value);
       // setSelectedValues(selectedValues.concat(selected));
-      console.log('values/id', {values: [...selectedValues.values, { id }]});
-      console.log('values', values);
-      setSelectedValues({values: [...selectedValues.values, {id}]}) 
-      console.log('value added!', id)
+      // console.log('values/id', {values: [...selectedValues.values, { id }]});
+      // console.log('values', values);
+      setSelectedValues({values: [...selectedValues.values, { values_id: id }]}) 
+      //console.log('value added!', id)
     };
   };
 
@@ -83,9 +84,17 @@ const SelectValues = props => {
           </div>
           ))}
       </div>
+      <button
+        onClick={resetSelected}
+      >
+        Reset Selections
+      </button>
       <br />
       <button
-        onClick={() => props.history.push('/values-dashboard')}
+        onClick={() => {
+          props.history.push('/values-dashboard')
+          dispatch(intermediateValues(selectedValues));
+        }}
       >
         Continue
       </button>
@@ -100,4 +109,4 @@ const mapStateToProps = state => {
 };
 // don't just return state -- fix this later.
 
-export default connect(mapStateToProps, { fetchValueById })(SelectValues);
+export default connect(mapStateToProps, { fetchValueById, intermediateValues })(SelectValues);
