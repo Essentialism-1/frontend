@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect,  } from 'react-redux';
+import { connect, } from 'react-redux';
 import { NavLink, useHistory } from 'react-router-dom';
 import { Nav } from 'reactstrap';
 import './formStyle.css';
@@ -24,28 +24,28 @@ const Navigation = props => {
           <i className="fa fa-calendar-check-o" />
         </h1>
 
-        {/* <div className='links-container'> */}
-        <NavLink className='nav-link active text-dark ml-5'
-          to='/dashboard'>Home </NavLink>
+        <div className='links-container'>
+          <NavLink className='nav-link active text-dark'
+            to='/dashboard'>Home </NavLink>
 
-        <NavLink className='nav-link text-dark'
-          to='/'>Login</NavLink>
+          <NavLink className='nav-link text-dark'
+            to='/'>Login</NavLink>
 
-        <NavLink className='nav-link text-dark'
-          to='/signup'>Sign Up!</NavLink>
-        {/* Logout button top right of nav */}
+          <NavLink className='nav-link text-dark'
+            to='/signup'>Sign Up!</NavLink>
+          {/* Logout button top right of nav */}
 
-        <NavLink 
-          to='' 
-          className='nav-link text-dark ml-5'
-          onClick={(e) => handleLogout(e)}
-        >
-          Logout
+          <NavLink
+            to=''
+            className='nav-link text-dark'
+            onClick={(e) => handleLogout(e)}
+          >
+            Logout
         </NavLink>
-        {/* </div> */}
+        </div>
       </Nav>
     </div >
   )
 }
 
-export default connect(null, { logout }) (Navigation);
+export default connect(null, { logout })(Navigation);

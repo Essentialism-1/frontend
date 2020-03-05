@@ -1,6 +1,15 @@
 import React, { useEffect } from 'react';
 import { connect, useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
+import {
+  DescribeValuesTitle,
+  DescribeValuesContainer,
+  TextAreaContainer,
+  TextArea,
+  SubmitDescriptions,
+  ValueName
+} from '../styled/styledComponents';
+import { Button } from 'reactstrap';
 
 import { fetchValueById, postUserValues } from '../actions';
 
@@ -27,34 +36,39 @@ const ValuesDashboard = props => {
   }
 
   return (
-    <div>
-      <h1>Testing</h1>
+    <DescribeValuesContainer>
+      <DescribeValuesTitle>Describe Your Values</DescribeValuesTitle>
       {/* {props.selectedValues} */}
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <textarea
+      <TextAreaContainer onSubmit={handleSubmit(onSubmit)}>
+        <ValueName>Value 1</ValueName>
+        <TextArea
           name='description1'
           ref={register({
             required: 'Description required!',
           })}
         />
-        <textarea
+        <ValueName>Value 2</ValueName>
+        <TextArea
           name='description2'
           ref={register({
             required: 'Description required!',
           })}
         />
-        <textarea
+        <ValueName>Value 3</ValueName>
+        <TextArea
           name='description3'
           ref={register({
             required: 'Description required!',
           })}
         />
-      
-      <button type='submit'>
-        Add Descriptions
-      </button>
-      </form>
-    </div>
+
+        <SubmitDescriptions
+          type='submit'
+          color='secondary'>
+          Add Descriptions
+      </SubmitDescriptions>
+      </TextAreaContainer>
+    </DescribeValuesContainer>
   )
 }
 
@@ -64,4 +78,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { fetchValueById, postUserValues }) (ValuesDashboard);
+export default connect(mapStateToProps, { fetchValueById, postUserValues })(ValuesDashboard);
