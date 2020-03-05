@@ -1,6 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { connect, useDispatch } from 'react-redux';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
+import {
+  SelectValuesContainer,
+  ValuesButtonContainer,
+  Values,
+  ValuesBtns,
+  ValuesTitle
+} from '../styled/styledComponents';
+
+import { Button } from 'reactstrap';
 
 import { fetchValueById, intermediateValues } from '../actions';
 
@@ -15,12 +24,12 @@ const SelectValues = props => {
 
   useEffect(() => {
     axiosWithAuth()
-    .get('/values')
-    .then(res => {
-      console.log('get values', res.data);
-      setValues(res.data);
-    })
-    .catch(err => console.log('get values error', err))
+      .get('/values')
+      .then(res => {
+        console.log('get values', res.data);
+        setValues(res.data);
+      })
+      .catch(err => console.log('get values error', err))
   }, []);
 
   // const fetchId = id => {
@@ -44,8 +53,8 @@ const SelectValues = props => {
 
   //`/user_values/${id}` on next page!!!!
 
-  const addSelectedValues =( id, value ) => {
-    if(selectedValues.values.length >= 3) {
+  const addSelectedValues = (id, value) => {
+    if (selectedValues.values.length >= 3) {
       alert('Values capped at three.');
     } else {
       // filter over value and look at last sprint 
@@ -54,7 +63,7 @@ const SelectValues = props => {
       // setSelectedValues(selectedValues.concat(selected));
       // console.log('values/id', {values: [...selectedValues.values, { id }]});
       // console.log('values', values);
-      setSelectedValues({values: [...selectedValues.values, { values_id: id }]}) 
+      setSelectedValues({ values: [...selectedValues.values, { values_id: id }] })
       //console.log('value added!', id)
     };
   };
@@ -69,36 +78,41 @@ const SelectValues = props => {
   // })
   console.log('selectedValues', selectedValues)
 
-  return(
-    <div className='select-values-container'>
-      <h2>Select Three Values</h2>
-      <div className='value-list'>
+  return (
+    <SelectValuesContainer className='select-values-container'>
+      <ValuesTitle>Select Three Values</ValuesTitle>
+      <Values className='value-list'>
         {values.map(value => (
-          <div key={value.id} className='value-button-div'>
-            <button
+          <ValuesBtns key={value.id} className='value-button-div'>
+            <Button
+              color='primary'
               className='value-button'
               onClick={() => addSelectedValues(value.id)}
             >
               {value.value}
-            </button>
-          </div>
-          ))}
-      </div>
-      <button
-        onClick={resetSelected}
-      >
-        Reset Selections
-      </button>
-      <br />
-      <button
-        onClick={() => {
-          props.history.push('/values-dashboard')
-          dispatch(intermediateValues(selectedValues));
-        }}
-      >
-        Continue
-      </button>
-    </div>
+            </Button>
+          </ValuesBtns>
+        ))}
+      </Values>
+      <ValuesButtonContainer>
+        <Button
+          color='danger'
+          onClick={resetSelected}
+        >
+          Reset Selections
+      </Button>
+        <br />
+        <Button
+          color='success'
+          onClick={() => {
+            props.history.push('/values-dashboard')
+            dispatch(intermediateValues(selectedValues));
+          }}
+        >
+          Continue
+      </Button>
+      </ValuesButtonContainer>
+    </SelectValuesContainer>
   )
 }
 

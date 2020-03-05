@@ -11,9 +11,9 @@
   width: 100%;
   height: 100vh;
   padding-top: 5% ;
-  background: darkslategray;
+  background:#578daf;
 }
-
+/* 
 .login-forms{
   width: 50%;
   display: flex;
@@ -24,10 +24,26 @@
   height: 90%;
   background-color: rgb(209, 209, 209);
   border-radius: 15px;
-}
+/* } */
+
+.login-forms{
+  background: 	#a9bbc2;
+  height: 60%;
+  width: 40%;
+  margin: 0 auto;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  border-radius:15px;
+  color:#06273c;
+} 
+
+
+
 .signup-container h1{
-  color:tomato;
-  padding-bottom:1%;
+  color:#eaeff0;
+  padding-bottom:2%;
   font-size: 3rem;
   font-family: 'Bitter', sans-serif;
 }
@@ -42,11 +58,12 @@
 }
 
 .login-forms input {
-  width: 50px 100px;
-  background-color: rgb(170, 165, 165);
+  width: 100%;
+  background-color:#eaeff0;
   border-radius: 5px;
-  border-color:  rgb(170, 165, 165);
+  border-color:  #aaaaaa;
 }
+
 
 /* Login Form Styles */
 .login-page{
@@ -60,21 +77,9 @@
   padding-bottom:1%;
   font-size: 3rem;
   font-family: 'Bitter', sans-serif;
-  color:tomato;
+  color:#011466;
 }
 
-.login-forms{
-   background:  rgb(209, 209, 209);
-   height: 60%;
-   width: 40%;
-   margin: 0 auto;
-   display:flex;
-   flex-direction: column;
-   align-items: center;
-   justify-content: space-evenly;
-   border-radius:15px;
-   color:tomato;
-}
 
 .login-groups{
   display:flex;
@@ -84,9 +89,9 @@
 
 .sign-up input{
   width: 50px 100px;
-  background-color:  rgb(170, 165, 165);
+  background-color: #ffffff;
   border-radius: 5px;
-  border-color:  rgb(170, 165, 165);
+  border-color: #eeeeee;
 }
 
 
@@ -126,7 +131,7 @@
   border-radius: 15px;
 }
 .editUser-container h1{
-  color:tomato;
+  color:#011466;
   padding-bottom:1%;
   font-size: 3rem;
   font-family: 'Bitter', sans-serif;
@@ -158,7 +163,7 @@
    align-items: center;
    justify-content: space-evenly;
    border-radius:15px;
-   color:tomato;
+   color:#011466;
 }
 
 
@@ -217,3 +222,45 @@
 .font-email{
   font-size: 1.3rem;
 }
+
+/*  Media Query */
+@media only screen and (max-width: 850px){
+  .login-forms {
+   padding: 1rem;
+  }
+
+  .login-forms input{
+    margin: auto;
+   width: 90%;
+  }
+
+
+  .sign-up{
+    padding: 2rem;
+  }
+
+  .signup-container h1{
+    font-size: 2rem;
+  }
+
+  .login-page h1 {
+    font-size: 2rem;
+  }
+
+
+  .navbar h1 {
+    display: none;
+  }
+
+  .navbar .logout{
+    display: none;
+  }
+
+  /* .links-container{
+    width: 100px;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    background-color: red;
+  } */
+};

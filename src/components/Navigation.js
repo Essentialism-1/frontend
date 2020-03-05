@@ -24,7 +24,7 @@ const Navigation = props => {
           <i className="fa fa-calendar-check-o" />
         </h1>
 
-
+        {/* <div className='links-container'> */}
         <NavLink className='nav-link active text-dark ml-5'
           to='/dashboard'>Home </NavLink>
 
@@ -34,6 +34,7 @@ const Navigation = props => {
         <NavLink className='nav-link text-dark'
           to='/signup'>Sign Up!</NavLink>
         {/* Logout button top right of nav */}
+
         <NavLink 
           to='' 
           className='nav-link text-dark ml-5'
@@ -41,6 +42,7 @@ const Navigation = props => {
         >
           Logout
         </NavLink>
+        {/* </div> */}
       </Nav>
     </div >
   )
