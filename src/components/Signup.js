@@ -78,7 +78,7 @@ const Signup = props => {
 
         </FormGroup>
 
-        <Button color='success' type='submit'>Sign Up!</Button>
+        <Button color='secondary' type='submit'>Sign Up!</Button>
 
       </Form>
       <Link to='/'>
