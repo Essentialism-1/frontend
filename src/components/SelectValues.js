@@ -96,6 +96,7 @@ const SelectValues = props => {
       </Values>
       <ValuesButtonContainer>
         <Button
+          outline
           color='danger'
           onClick={resetSelected}
         >
