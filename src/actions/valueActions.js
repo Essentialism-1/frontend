@@ -12,6 +12,8 @@ export const SET_INTERMEDIATE_VALUES = 'SET_INTERMEDIATE_VALUES';
 export const SET_USER_VALUES = 'SET_USER_VALUES';
 export const SET_PROJECTS = 'SET_PROJECTS';
 export const FETCH_PROJECTS = 'FETCH_PROJECTS';
+export const ADD_PROJECT_TO_EDIT = 'ADD_PROJECT_TO_EDIT';
+export const UPDATE_PROJECTS = 'UPDATE_PROJECTS';
 
 // export const fetchValues = () => dispatch => {
 //   dispatch({ type: FETCH_VALUE_START });
@@ -76,3 +78,22 @@ export const getUserProjects = () => dispatch => {
   })
   .catch(err => console.log('get user projects error', err))
 }
+
+export const addEditProject = (project, history) => dispatch => {
+  dispatch({ type: ADD_PROJECT_TO_EDIT, payload: project });
+  history.push('/edit-project');
+}
+
+export const editProject = (project, id, history) => dispatch => {
+  console.log('project', project, id);
+  axiosWithAuth()
+  .put(`/projects/${id}`, project)
+  .then(res => {
+    dispatch({ type: UPDATE_PROJECTS, payload: res.data.project })
+    history.push('/dashboard');
+  })
+  .catch(err => console.log('edit project failure', err))
+
+}
+
+// export const deleteProject 

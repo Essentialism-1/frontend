@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { connect, useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 
-import { fetchValueById, postUserProject, getUserProjects } from '../actions';
+import { axiosWithAuth } from '../utils/axiosWithAuth';
+import { fetchValueById, postUserProject, getUserProjects, addEditProject } from '../actions';
 
 const Dashboard = props => {
   const { register, handleSubmit, errors } = useForm();
@@ -16,6 +17,15 @@ const Dashboard = props => {
   const onSubmit = project => {
     console.log('results', project);
     dispatch(postUserProject(project))
+  }
+
+  const handleDelete = id => {
+    axiosWithAuth()
+    .delete(`/projects/${id}`)
+    .then(res => {
+      console.log(res);
+      dispatch(getUserProjects());
+    });
   }
 
   return(
@@ -70,6 +80,22 @@ const Dashboard = props => {
           <h4>{project.title}</h4>
           <p>{project.body}</p>
           {/* <p>{project.values_id}</p> */}
+          <button
+            onClick={() => {
+              let value = props.state.dataReducer.values.filter(value => 
+                value.values_id == project.user_values_id
+              )
+              let valueName = value[0].value;
+              dispatch(addEditProject({...project, valueName}, props.history))
+            }}
+          >
+            Update Project
+          </button>
+          <button
+            onClick={() => handleDelete(project.id)}
+          >
+            Delete Project
+          </button>
         </div>
       )}
       
@@ -88,4 +114,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { fetchValueById, postUserProject, getUserProjects })(Dashboard);
+export default connect(mapStateToProps, { fetchValueById, postUserProject, getUserProjects, addEditProject })(Dashboard);
