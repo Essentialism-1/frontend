@@ -56,7 +56,7 @@ const Dashboard = props => {
                 {props.state.dataReducer.values.map(value => {
                   return (
                   <option
-                    value={value.values_id}
+                    value={value.id}
                   >
                     {value.value}
                   </option>
@@ -83,7 +83,7 @@ const Dashboard = props => {
           <button
             onClick={() => {
               let value = props.state.dataReducer.values.filter(value => 
-                value.values_id == project.user_values_id
+                value.id == project.user_values_id
               )
               let valueName = value[0].value;
               dispatch(addEditProject({...project, valueName}, props.history))

@@ -1,9 +1,19 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { connect,  } from 'react-redux';
+import { NavLink, useHistory } from 'react-router-dom';
 import { Nav } from 'reactstrap';
 import './formStyle.css';
+import { logout } from '../actions';
 
-const Navigation = () => {
+const Navigation = props => {
+  let history = useHistory();
+
+  const handleLogout = (e) => {
+    console.log('logout', history);
+    props.logout(e, history);
+    history.push('/');
+    // props.history.push('/')
+  }
 
   return (
     <div className='nav-container'>
@@ -24,8 +34,13 @@ const Navigation = () => {
         <NavLink className='nav-link text-dark'
           to='/signup'>Sign Up!</NavLink>
         {/* Logout button top right of nav */}
-        <NavLink to='' className='nav-link text-dark ml-5 logout'>
-          <p>Logout</p>
+
+        <NavLink 
+          to='' 
+          className='nav-link text-dark ml-5'
+          onClick={(e) => handleLogout(e)}
+        >
+          Logout
         </NavLink>
         {/* </div> */}
       </Nav>
@@ -33,4 +48,4 @@ const Navigation = () => {
   )
 }
 
-export default Navigation;
+export default connect(null, { logout }) (Navigation);
