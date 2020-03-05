@@ -11,7 +11,7 @@ import SelectValues from './components/SelectValues';
 import ValuesDashboard from './components/ValuesDashboard';
 import EditUser from './components/EditUser';
 import UserList from './components/UserList';
-
+import Dashboard from './components/Dashboard';
 
 
 function App() {
@@ -24,8 +24,8 @@ function App() {
         <Route path='/signup' component={Signup} />
 
         <PrivateRoute exact path='/select-values' component={SelectValues} />
-        <PrivateRoute path='/values-dashboard' component={ValuesDashboard}/>
-        <PrivateRoute path='/dashboard' />
+        <PrivateRoute path='/values-dashboard' component={ValuesDashboard} />
+        <PrivateRoute path='/dashboard' component={Dashboard} />
         <PrivateRoute path='/' />
       </Switch>
       
