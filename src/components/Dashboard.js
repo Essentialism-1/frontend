@@ -79,7 +79,12 @@ const Dashboard = props => {
         <div key={project.id} >
           <h4>{project.title}</h4>
           <p>{project.body}</p>
-          {/* <p>{project.values_id}</p> */}
+          <p>{props.state.dataReducer.values.map(value => {
+            if(value.id == project.user_values_id) {
+              return value.value;
+            }
+          })}</p>
+
           <button
             onClick={() => {
               let value = props.state.dataReducer.values.filter(value => 
