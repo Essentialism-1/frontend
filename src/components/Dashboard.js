@@ -22,7 +22,8 @@ import {
   CardTitle,
   CardSubtitle,
   Button,
-  CardHeader
+  CardHeader,
+  UncontrolledTooltip
 } from "reactstrap";
 
 const Dashboard = props => {
@@ -57,88 +58,105 @@ const Dashboard = props => {
         }}
       >
         {props.state.dataReducer.values.map(value => (
-          <div
-            key={value.values_id}
-            style={{
-              display: "flex",
-              flexDirection: "column"
-            }}
-          >
+          <Col key={value.values_id}>
             <h4>
-              <Badge color="primary" pill>
+              <Badge
+                color="primary"
+                id={`UncontrolledTooltipExample${value.values_id}`}
+                onMouseOver={event => {
+                  console.log(event.target);
+                  event.target.style.cursor = "pointer";
+                }}
+              >
                 {value.value}
               </Badge>
             </h4>
-            <p style={{ textAlign: "left" }}>{value.description}</p>
-          </div>
+            <UncontrolledTooltip
+              placement="bottom"
+              target={`UncontrolledTooltipExample${value.values_id}`}
+            >
+              {value.description}
+            </UncontrolledTooltip>
+          </Col>
         ))}
       </Row>
 
-      <Row xs="12" style={{ width: "100%" }}>
-        {props.state.dataReducer.values && (
+      <Row>
+        <Col style={{ maxWidth: "450px", margin: "30px auto" }}>
+          <Card
+            style={{
+              boxShadow:
+                "0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22)"
+            }}
+            body
+          >
+            {props.state.dataReducer.values && (
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <Row style={{ marginBottom: "20px" }}>
+                  <Col>
+                    <input
+                      name="title"
+                      placeholder="Project Title"
+                      ref={register({
+                        required: "Project Required!"
+                      })}
+                      style={{ width: "100%", borderRadius: "5px" }}
+                    />
+                  </Col>
+
+                  <Col>
+                    <select
+                      name="user_values_id"
+                      ref={register({
+                        required: true
+                      })}
+                    >
+                      {props.state.dataReducer.values.map(value => {
+                        return <option value={value.id}>{value.value}</option>;
+                      })}
+                    </select>
+                  </Col>
+                </Row>
+
+                <Row style={{ marginBottom: "10px" }}>
+                  <Col>
+                    <textarea
+                      name="body"
+                      ref={register({
+                        required: "Project Description required"
+                      })}
+                      style={{
+                        width: "100%",
+                        height: "100px",
+                        borderRadius: "5px"
+                      }}
+                    />
+                  </Col>
+                </Row>
+
+                <Row>
+                  <Col>
+                    <Button
+                      type="submit"
+                      color="success"
+                      style={{ width: "100%", borderRadius: "5px" }}
+                    >
+                      Submit Projects
+                    </Button>
+                  </Col>
+                </Row>
+              </form>
+            )}
+          </Card>
+        </Col>
+        {props.state.dataReducer.projects.map(project => (
           <Col
             style={{
-              maxWidth: "500px"
+              maxWidth: "550px",
+              minWidth: "350px",
+              margin: "30px auto"
             }}
           >
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <Row style={{ marginBottom: "20px" }}>
-                <Col>
-                  <input
-                    name="title"
-                    placeholder="Project Title"
-                    ref={register({
-                      required: "Project Required!"
-                    })}
-                    style={{ width: "100%", borderRadius: "5px" }}
-                  />
-                </Col>
-
-                <Col>
-                  <select
-                    name="user_values_id"
-                    ref={register({
-                      required: true
-                    })}
-                  >
-                    {props.state.dataReducer.values.map(value => {
-                      return <option value={value.id}>{value.value}</option>;
-                    })}
-                  </select>
-                </Col>
-              </Row>
-
-              <Row style={{ marginBottom: "10px" }}>
-                <Col>
-                  <textarea
-                    name="body"
-                    ref={register({
-                      required: "Project Description required"
-                    })}
-                    style={{ width: "100%", borderRadius: "5px" }}
-                  />
-                </Col>
-              </Row>
-
-              <Row>
-                <Col>
-                  <Button
-                    type="submit"
-                    color="success"
-                    style={{ width: "100%", borderRadius: "5px" }}
-                  >
-                    Submit Projects
-                  </Button>
-                </Col>
-              </Row>
-            </form>
-          </Col>
-        )}
-      </Row>
-
-      <Row>
-        {props.state.dataReducer.projects.map(project => (
-          <Col style={{ maxWidth: "350px", margin: "30px auto" }}>
             <Card
               key={project.id}
               style={{
