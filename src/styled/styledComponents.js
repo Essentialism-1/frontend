@@ -12,15 +12,17 @@ const RedError = styled.p`
 // Select 3 Values Page
 
 const SelectValuesContainer = styled.div`
-  height: 100vh;
+  height: 110vh;
   width: 100%;
   background-color: #bac1c9;
-  border: 1px solid green;
-  padding-top: 2%;
+  padding-top:2%;
+  @media (max-width: 820px) {
+    height: 100vh;
+  }
 `
 const ValuesButtonContainer = styled.div`
-  height: 5vh;
-  width: 20%;
+  height: 10%;
+  width: 50%;
   padding: 2rem;
   margin: auto;
   display:flex;
@@ -28,28 +30,32 @@ const ValuesButtonContainer = styled.div`
   align-items:center;
   background-color:#545b63;
   border-radius: 15px;
+  @media (max-width: 820px) {
+    width: 80%;
+    height: 6%;
+    padding: 2rem;
+  }
 `
 const ValuesTitle = styled.h1`
-  border: 1px solid red;
   width: 40%;
   margin: 0 auto;
   background-color: #545b63;
   color:white;
-  padding:1%;
+  padding:2%;
   border-radius: 15px;
 
-  @media (max-width: 900px) {
+  @media (max-width: 820px) {
     font-size:1.2rem;
-    width: 60%;
-    height: 5vh;
-    padding: 2%;
+    width: 65%;
+    height: 5%;
+    margin-top:3%;
   }
 `
 
 const Values = styled.div`
-  width: 40%;
-  height: 65%;
-  padding:3%;
+  width: 50%;
+  height: 70%;
+  padding:2%;
   margin:auto;
   display:flex;
   flex-wrap: wrap;
@@ -58,24 +64,61 @@ const Values = styled.div`
   background-color:	 #545b63;
   margin: 2% auto;
   border-radius: 15px;
-  @media (max-width: 900px) {
-  width: 80%;
+  @media (max-width: 820px) {
+  width: 90%;
+  padding: 2%;
+  height: 70%;
+  margin-top: 5%;
+  margin-bottom:5%;
 }
 `;
+
 const ValuesBtns = styled.div`
- padding:10px; 
+ padding: 2%; 
+ @media (max-width: 820px) {
+   padding: 2%;
+  }
 `
+const ResetContinueBtn = styled.span`
+  padding:2rem;
+  @media( max-width:820px){
+    font-size:.8rem;
+    padding: 1rem;
+  }
+`
+
+const Btn = styled.button`
+  width: 110%;
+  margin: 0 auto;
+  background-color:#8abcd9;
+  border-radius: 8px;
+  color: white;
+  text-align: center;
+  padding:6%;
+  font-size: 1.2rem;
+  transition-duration: 0.4s;
+  color:white;
+
+  &:hover{
+  background-color:	#3a5072;
+  color:  #8abcd9;
+  }
+  @media (max-width: 820px) {
+    font-size: 1rem;
+    padding: 3%;
+  }
+`
+
 // Describe your values
 
 const DescribeValuesContainer = styled.div`
-  border: 1px solid red;
   height: 120vh;
   width: 100%;
   background-color:#bac1c9;
+  padding:2%;
  `
 
 const DescribeValuesTitle = styled.h1`
-  border:1px solid green;
   width: 40%;
   margin: 2% auto;
   padding: 1%;
@@ -83,7 +126,7 @@ const DescribeValuesTitle = styled.h1`
   border-radius: 15px;
   color: white;
   font-size: 2rem;
-  @media (max-width: 900px) {
+  @media (max-width: 950px) {
     font-size:1.1rem;
     width: 70%;
     margin-top:6%; 
@@ -91,7 +134,6 @@ const DescribeValuesTitle = styled.h1`
   }
 `;
 const TextAreaContainer = styled.form`
-  border: 1px solid pink;
   height: 80%;
   margin: 0 auto;
   width: 50%;
@@ -102,21 +144,20 @@ const TextAreaContainer = styled.form`
   justify-content:space-evenly;
   background-color:#545b63;
   border-radius: 15px;
-  @media (max-width: 900px) {
+  @media (max-width: 950px) {
     width: 80%;
     padding:4%;
   }
 `
 
 const TextArea = styled.textarea`
-  border: 1px solid green;
   width: 50%;
   margin: 0 auto;
   margin-bottom: 2%;
   border-radius: 15px;
   height:100%;
   background-color:#f3f4f6;
-  @media (max-width: 900px) {
+  @media (max-width: 950px) {
     width: 80%;
     margin-bottom: 10%;
     margin-top:2%;
@@ -137,7 +178,7 @@ const SubmitDescriptions = styled.button`
   background-color:	#bac1c9;
   color:#545b63;}
 
-  @media (max-width: 900px) {
+  @media (max-width: 950px) {
     font-size:1rem;
     width: 60%;
     height: 5vh;
@@ -146,7 +187,7 @@ const SubmitDescriptions = styled.button`
 `
 const ValueName = styled.h2`
   color:white;
-  @media (max-width: 900px) {
+  @media (max-width: 950px) {
     font-size: 1.2rem;
     margin: 4% 0;
   }
@@ -165,5 +206,7 @@ export {
   TextAreaContainer,
   TextArea,
   SubmitDescriptions,
-  ValueName
+  ValueName,
+  Btn,
+  ResetContinueBtn
 };
