@@ -6,8 +6,11 @@ import {
   ValuesButtonContainer,
   Values,
   ValuesBtns,
-  ValuesTitle
-} from "../styled/styledComponents";
+  ValuesTitle,
+  Btn,
+  ResetContinueBtn
+} from '../styled/styledComponents';
+
 
 import { Button } from "reactstrap";
 
@@ -85,20 +88,27 @@ const SelectValues = props => {
       <ValuesTitle>Select Three Values</ValuesTitle>
       <Values className="value-list">
         {values.map(value => (
-          <ValuesBtns key={value.id} className="value-button-div">
-            <Button
-              color="primary"
-              className="value-button"
+
+          <ValuesBtns key={value.id} className='value-button-div'>
+            <Btn
+              color='primary'
+              className='value-button'
+
               onClick={() => addSelectedValues(value.id)}
             >
               {value.value}
-            </Button>
+            </Btn>
           </ValuesBtns>
         ))}
       </Values>
       <ValuesButtonContainer>
-        <Button outline color="danger" onClick={resetSelected}>
-          Reset Selections
+        <Button
+          outline
+          color='danger'
+          onClick={resetSelected}
+        >
+          <ResetContinueBtn>Reset</ResetContinueBtn>
+
         </Button>
         <br />
         <Button
@@ -108,7 +118,8 @@ const SelectValues = props => {
             dispatch(intermediateValues(selectedValues));
           }}
         >
-          Continue
+          <ResetContinueBtn>Continue</ResetContinueBtn>
+
         </Button>
       </ValuesButtonContainer>
     </SelectValuesContainer>
